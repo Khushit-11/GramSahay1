@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
-import { Camera, Users, FileCheck2, Loader2, Sparkles, Volume2, ArrowLeft, ArrowRight, Upload } from 'lucide-react';
+import { Camera, Users, FileCheck2, Loader2, Sparkles, Volume2, ArrowLeft, ArrowRight, Upload, CheckCircle, XCircle } from 'lucide-react';
 
 const totalSteps = 5;
 
@@ -27,6 +27,7 @@ export default function LoanApplicationForm() {
     const [docScanned, setDocScanned] = useState(false);
     const [docPreview, setDocPreview] = useState<string | null>(null);
     const [isAssessing, setIsAssessing] = useState(false);
+    const [offerStatus, setOfferStatus] = useState<'pending' | 'accepted' | 'declined'>('pending');
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleStartAssessment = () => {
@@ -180,10 +181,22 @@ export default function LoanApplicationForm() {
                                 </div>
                             </CardContent>
                         </Card>
-                         <div className="flex gap-4">
-                            <Button variant="outline" className="w-full">Decline</Button>
-                            <Button className="w-full bg-accent hover:bg-accent/90">Accept Offer</Button>
-                        </div>
+                         {offerStatus === 'pending' && (
+                            <div className="flex gap-4">
+                                <Button variant="outline" className="w-full" onClick={() => setOfferStatus('declined')}>Decline</Button>
+                                <Button className="w-full bg-accent hover:bg-accent/90" onClick={() => setOfferStatus('accepted')}>Accept Offer</Button>
+                            </div>
+                         )}
+                         {offerStatus === 'accepted' && (
+                            <div className="p-4 rounded-md bg-green-100 text-green-800 font-semibold flex items-center justify-center gap-2">
+                                <CheckCircle /> Offer Accepted!
+                            </div>
+                         )}
+                         {offerStatus === 'declined' && (
+                             <div className="p-4 rounded-md bg-red-100 text-red-800 font-semibold flex items-center justify-center gap-2">
+                                <XCircle /> Offer Declined
+                            </div>
+                         )}
                     </div>
                 )}
 
