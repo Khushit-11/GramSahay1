@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutGrid, FileText, BarChart3, MessageSquare } from 'lucide-react';
+import { LayoutGrid, FileText, BarChart3, MessageSquare, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/dashboard', label: 'Home', icon: LayoutGrid },
   { href: '/dashboard/apply', label: 'Apply', icon: FileText },
   { href: '/dashboard/loan-status', label: 'Status', icon: BarChart3 },
+  { href: '/dashboard/financial-literacy', label: 'Learn', icon: BookOpen },
   { href: '/dashboard/support', label: 'Support', icon: MessageSquare },
 ];
 
@@ -16,7 +17,7 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-card border-t shadow-t-lg">
+    <nav className="fixed bottom-0 left-0 right-0 h-20 bg-card border-t shadow-t-lg z-50">
       <div className="flex justify-around items-center h-full max-w-lg mx-auto">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
