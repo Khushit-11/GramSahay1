@@ -95,7 +95,7 @@ export default function Chatbot() {
                 )}
               >
                 {message.sender === 'bot' && (
-                  <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0">
                     <Bot className="w-5 h-5" />
                   </div>
                 )}
@@ -113,7 +113,7 @@ export default function Chatbot() {
             ))}
             {isTyping && (
                  <div className="flex items-end gap-2 justify-start">
-                    <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0">
                         <Bot className="w-5 h-5" />
                     </div>
                     <div className="bg-secondary text-secondary-foreground p-3 rounded-lg rounded-bl-none">

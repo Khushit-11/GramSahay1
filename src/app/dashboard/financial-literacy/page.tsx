@@ -63,14 +63,14 @@ export default function FinancialLiteracyPage() {
                     <p className="text-muted-foreground">Test your knowledge and improve your financial skills.</p>
                 </div>
                 <div className="text-right">
-                     <p className="font-bold text-lg text-primary flex items-center gap-2"><Trophy className="text-accent" /> Score: {score}</p>
+                     <p className="font-bold text-lg text-primary flex items-center gap-2"><Trophy className="text-primary" /> Score: {score}</p>
                 </div>
             </header>
 
             <Card className="shadow-lg">
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                        <Sparkles className="text-accent"/>
+                        <Sparkles className="text-primary"/>
                         Quiz Time!
                     </CardTitle>
                     <CardDescription>Answer the question below.</CardDescription>
@@ -97,7 +97,7 @@ export default function FinancialLiteracyPage() {
                             </RadioGroup>
 
                             {answered && isCorrect !== null && (
-                                <Alert variant={isCorrect ? 'default' : 'destructive'} className={isCorrect ? 'bg-green-50 border-green-200' : ''}>
+                                <Alert variant={isCorrect ? 'default' : 'destructive'} className={isCorrect ? 'bg-green-50 border-green-200 text-green-800' : ''}>
                                     <AlertTitle>{isCorrect ? 'Correct!' : 'Not quite!'}</AlertTitle>
                                     <AlertDescription>
                                         {quiz.explanation}

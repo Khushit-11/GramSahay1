@@ -37,7 +37,7 @@ export default function AuthPage() {
            alt="Rural finance"
            data-ai-hint="rural finance"
            fill
-           className="object-cover opacity-5"
+           className="object-cover opacity-10"
          />
        </div>
       <Card className="w-full max-w-sm shadow-2xl z-10 bg-card/80 backdrop-blur-sm">

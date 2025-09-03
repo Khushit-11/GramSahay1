@@ -50,7 +50,7 @@ export default function LoanStatusPage() {
                         <p className="text-3xl font-bold text-primary">₹4,632</p>
                         <p className="text-muted-foreground">on August 5, 2024</p>
                     </div>
-                    <Button className="bg-accent hover:bg-accent/90">Pay Now</Button>
+                    <Button>Pay Now</Button>
                 </CardContent>
             </Card>
 

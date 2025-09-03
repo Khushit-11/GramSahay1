@@ -193,7 +193,7 @@ export default function LoanApplicationForm() {
 
                 {step === 4 && !isAssessing && (
                     <div className="text-center space-y-6 py-8">
-                        <Sparkles className="mx-auto h-12 w-12 text-accent" />
+                        <Sparkles className="mx-auto h-12 w-12 text-primary" />
                         <h3 className="text-xl font-semibold font-headline">Ready for AI Assessment</h3>
                         <p className="text-muted-foreground">We'll now use AI to check your details and generate a loan offer.</p>
                         <Button size="lg" onClick={handleStartAssessment}>Start Assessment</Button>
@@ -227,7 +227,7 @@ export default function LoanApplicationForm() {
                          {offerStatus === 'pending' && (
                             <div className="flex gap-4">
                                 <Button variant="outline" className="w-full" onClick={() => setOfferStatus('declined')}>Decline</Button>
-                                <Button className="w-full bg-accent hover:bg-accent/90" onClick={() => setOfferStatus('accepted')}>Accept Offer</Button>
+                                <Button className="w-full" onClick={() => setOfferStatus('accepted')}>Accept Offer</Button>
                             </div>
                          )}
                          {offerStatus === 'accepted' && (

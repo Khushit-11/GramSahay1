@@ -10,10 +10,10 @@ export default function TopNav() {
     <header className="fixed top-0 left-0 right-0 h-20 bg-card/90 backdrop-blur-sm border-b shadow-sm z-50">
       <div className="flex justify-between items-center h-full max-w-lg mx-auto px-4">
         <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="p-2 bg-primary rounded-full">
-                <Landmark className="h-6 w-6 text-primary-foreground" />
+            <div className="p-2 bg-primary text-primary-foreground rounded-full">
+                <Landmark className="h-6 w-6" />
             </div>
-            <span className="font-bold text-lg font-headline text-primary">GrahSahay</span>
+            <span className="font-bold text-lg font-headline">GrahSahay</span>
         </Link>
         <Button asChild variant="ghost" size="icon">
           <Link href="/dashboard/profile">
