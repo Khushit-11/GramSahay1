@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Phone, KeyRound } from 'lucide-react';
+import Image from 'next/image';
 
 export default function AuthPage() {
   const [otpSent, setOtpSent] = useState(false);
@@ -29,8 +30,17 @@ export default function AuthPage() {
   };
 
   return (
-    <main className="flex flex-1 items-center justify-center p-4">
-      <Card className="w-full max-w-sm shadow-2xl">
+    <main className="flex min-h-screen items-center justify-center p-4 bg-secondary">
+       <div className="absolute inset-0">
+         <Image 
+           src="https://picsum.photos/1200/800"
+           alt="Rural finance"
+           data-ai-hint="rural finance"
+           fill
+           className="object-cover opacity-10"
+         />
+       </div>
+      <Card className="w-full max-w-sm shadow-2xl z-10">
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-2xl">
             {otpSent ? 'Enter OTP' : 'Login or Signup'}
