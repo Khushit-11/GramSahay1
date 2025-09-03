@@ -30,17 +30,17 @@ export default function AuthPage() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-4 bg-secondary">
+    <main className="flex min-h-screen items-center justify-center p-4 bg-background">
        <div className="absolute inset-0">
          <Image 
            src="https://picsum.photos/1200/800"
            alt="Rural finance"
            data-ai-hint="rural finance"
            fill
-           className="object-cover opacity-10"
+           className="object-cover opacity-5"
          />
        </div>
-      <Card className="w-full max-w-sm shadow-2xl z-10">
+      <Card className="w-full max-w-sm shadow-2xl z-10 bg-card/80 backdrop-blur-sm">
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-2xl">
             {otpSent ? 'Enter OTP' : 'Login or Signup'}
@@ -67,7 +67,7 @@ export default function AuthPage() {
                   />
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
+              <Button type="submit" className="w-full">
                 Send OTP
               </Button>
             </form>

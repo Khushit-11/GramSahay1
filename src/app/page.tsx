@@ -18,15 +18,15 @@ export default function LanguageSelection() {
         alt="Rural landscape"
         data-ai-hint="rural landscape"
         fill
-        className="object-cover opacity-10"
+        className="object-cover opacity-5"
       />
       <main className="relative z-10 flex flex-1 items-center justify-center p-4">
-        <Card className="w-full max-w-lg text-center shadow-2xl bg-card/90 backdrop-blur-sm">
+        <Card className="w-full max-w-lg text-center shadow-2xl bg-card/80 backdrop-blur-sm">
           <CardHeader className="items-center">
-              <div className="p-4 bg-primary rounded-full mb-4 border-4 border-primary-foreground/50 shadow-lg">
+              <div className="p-4 bg-primary rounded-full mb-4 border-4 border-primary-foreground/20 shadow-lg">
                 <Landmark className="h-10 w-10 text-primary-foreground" />
               </div>
-            <CardTitle className="font-headline text-3xl md:text-4xl font-bold text-primary">
+            <CardTitle className="font-headline text-3xl md:text-4xl font-bold text-primary-foreground">
               GrahSahay
             </CardTitle>
             <CardDescription className="text-base md:text-lg text-foreground/80">
