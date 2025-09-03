@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -12,6 +13,7 @@ import Image from 'next/image';
 export default function AuthPage() {
   const [otpSent, setOtpSent] = useState(false);
   const [phone, setPhone] = useState('');
+  const [otp, setOtp] = useState('');
   const router = useRouter();
 
   const handleSendOtp = (e: React.FormEvent) => {
@@ -26,7 +28,11 @@ export default function AuthPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real app, you'd verify the OTP here.
-    router.push('/dashboard');
+    if (otp.match(/^\d{6}$/)) {
+      router.push('/dashboard');
+    } else {
+        alert('Please enter a valid 6-digit OTP.');
+    }
   };
 
   return (
@@ -46,7 +52,7 @@ export default function AuthPage() {
             {otpSent ? 'Enter OTP' : 'Login or Signup'}
           </CardTitle>
           <CardDescription>
-            {otpSent ? `An OTP has been sent to ${phone}` : 'Enter your phone number to continue'}
+            {otpSent ? `Enter the OTP sent to your number.` : 'Enter your phone number to continue'}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -77,13 +83,21 @@ export default function AuthPage() {
                 <Label htmlFor="otp">One-Time Password (OTP)</Label>
                 <div className="relative">
                   <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <Input id="otp" type="text" placeholder="Enter 6-digit OTP" required className="pl-10" />
+                  <Input 
+                    id="otp" 
+                    type="text" 
+                    placeholder="Enter 6-digit OTP" 
+                    required 
+                    className="pl-10" 
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
                 </div>
               </div>
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              <Button variant="link" onClick={() => setOtpSent(false)} className="w-full">
+              <Button variant="link" onClick={() => { setOtpSent(false); setPhone(''); }} className="w-full">
                 Change number?
               </Button>
             </form>
