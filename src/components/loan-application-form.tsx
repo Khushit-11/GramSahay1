@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
-import { Camera, Users, FileCheck2, Loader2, Sparkles, Volume2, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Camera, Users, FileCheck2, Loader2, Sparkles, Volume2, ArrowLeft, ArrowRight, Upload } from 'lucide-react';
 
 const totalSteps = 5;
 
@@ -25,7 +25,9 @@ export default function LoanApplicationForm() {
     const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
     
     const [docScanned, setDocScanned] = useState(false);
+    const [docPreview, setDocPreview] = useState<string | null>(null);
     const [isAssessing, setIsAssessing] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleStartAssessment = () => {
         setIsAssessing(true);
@@ -33,6 +35,28 @@ export default function LoanApplicationForm() {
             setIsAssessing(false);
             nextStep();
         }, 3000);
+    };
+
+    const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setDocPreview(e.target?.result as string);
+                setDocScanned(true);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    
+    const handleUploadClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleCameraClick = () => {
+        // In a real app, you'd integrate a camera library here.
+        setDocPreview("https://picsum.photos/400/250");
+        setDocScanned(true);
     };
 
     return (
@@ -69,12 +93,24 @@ export default function LoanApplicationForm() {
                         </div>
                         <p className="text-muted-foreground">Please upload a clear picture of your Aadhaar card.</p>
                          {!docScanned ? (
-                            <Button size="lg" className="w-full h-24" onClick={() => setDocScanned(true)}>
-                                <Camera className="mr-2 h-6 w-6" /> Scan with Camera
-                            </Button>
+                             <div className="space-y-3">
+                                <Button size="lg" className="w-full h-20" onClick={handleCameraClick}>
+                                    <Camera className="mr-2 h-6 w-6" /> Scan with Camera
+                                </Button>
+                                <Button size="lg" variant="secondary" className="w-full h-20" onClick={handleUploadClick}>
+                                    <Upload className="mr-2 h-6 w-6" /> Upload from Device
+                                </Button>
+                                <input 
+                                    type="file" 
+                                    ref={fileInputRef} 
+                                    className="hidden" 
+                                    onChange={handleFileSelect} 
+                                    accept="image/*"
+                                />
+                             </div>
                         ) : (
                             <div className="p-4 border-2 border-dashed rounded-lg bg-secondary">
-                                <Image src="https://picsum.photos/400/250" data-ai-hint="id card" alt="Scanned Document" width={400} height={250} className="rounded-md mx-auto" />
+                                <Image src={docPreview || "https://picsum.photos/400/250"} data-ai-hint="id card" alt="Scanned Document" width={400} height={250} className="rounded-md mx-auto" />
                                 <p className="mt-4 text-green-600 font-semibold flex items-center justify-center gap-2"><FileCheck2/> Document captured successfully!</p>
                             </div>
                         )}
