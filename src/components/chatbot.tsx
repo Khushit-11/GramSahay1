@@ -7,6 +7,8 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Send, Bot } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { aiHelpChatbot } from '@/ai/flows/ai-help-chatbot';
+import { useToast } from '@/hooks/use-toast';
 
 type Message = {
   text: string;
@@ -21,6 +23,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
   const scrollToBottom = () => {
     if (scrollAreaRef.current) {
@@ -35,7 +38,7 @@ export default function Chatbot() {
     scrollToBottom();
   }, [messages, isTyping]);
   
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim() === '') return;
 
@@ -45,19 +48,34 @@ export default function Chatbot() {
       sender: 'user',
     };
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input;
     setInput('');
     setIsTyping(true);
 
-    // Simulate AI response
-    setTimeout(() => {
+    try {
+      const result = await aiHelpChatbot({ query: currentInput });
       const botResponse: Message = {
         id: Date.now() + 1,
-        text: "Thank you for your question. As an AI assistant, I can help with general queries. For your loan approved on July 10th, the next EMI is due on August 5th. For more specific issues, you can connect with a human agent.",
+        text: result.response,
         sender: 'bot',
       };
-      setIsTyping(false);
       setMessages((prev) => [...prev, botResponse]);
-    }, 2000);
+    } catch (error) {
+        console.error("Error with chatbot:", error);
+        toast({
+            variant: "destructive",
+            title: "Error",
+            description: "The AI assistant is currently unavailable. Please try again later.",
+        });
+        const botErrorResponse: Message = {
+            id: Date.now() + 1,
+            text: "Sorry, I'm having trouble connecting. Please try again in a moment.",
+            sender: 'bot',
+        };
+        setMessages((prev) => [...prev, botErrorResponse]);
+    } finally {
+        setIsTyping(false);
+    }
   };
 
   return (
@@ -117,6 +135,7 @@ export default function Chatbot() {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
             autoComplete="off"
+            disabled={isTyping}
           />
           <Button type="submit" size="icon" disabled={isTyping}>
             <Send className="h-4 w-4" />
