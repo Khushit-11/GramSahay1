@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -6,9 +7,7 @@ import { Landmark } from 'lucide-react';
 
 const languages = [
   "English", "हिन्दी", "বাংলা", "తెలుగు", "मराठी", "தமிழ்", "ગુજરાતી", "ಕನ್ನಡ", 
-  "മലയാളം", "ଓଡ଼ିଆ", "ਪੰਜਾਬੀ", "অসমীয়া", "Bodo", "Dogri", "Kashmiri", 
-  "Konkani", "Maithili", "Manipuri", "Nepali", "Sanskrit", "Santali", 
-  "Sindhi", "Urdu"
+  "മലയാളം", "ଓଡ଼ିଆ", "ਪੰਜਾਬੀ", "অসমীয়া"
 ];
 
 export default function LanguageSelection() {
@@ -16,13 +15,13 @@ export default function LanguageSelection() {
     <div className="relative min-h-screen w-full flex items-center justify-center bg-background">
       <Image
         src="https://picsum.photos/1200/800"
-        alt="Farmer in a field"
-        data-ai-hint="farmer field"
+        alt="Rural landscape"
+        data-ai-hint="rural landscape"
         fill
-        className="object-cover opacity-20"
+        className="object-cover opacity-10"
       />
       <main className="relative z-10 flex flex-1 items-center justify-center p-4">
-        <Card className="w-full max-w-2xl text-center shadow-2xl bg-card/90 backdrop-blur-sm">
+        <Card className="w-full max-w-lg text-center shadow-2xl bg-card/90 backdrop-blur-sm">
           <CardHeader className="items-center">
               <div className="p-4 bg-primary rounded-full mb-4 border-4 border-primary-foreground/50 shadow-lg">
                 <Landmark className="h-10 w-10 text-primary-foreground" />
@@ -35,7 +34,7 @@ export default function LanguageSelection() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {languages.map((lang) => (
                 <Button key={lang} variant="outline" asChild className="h-12 text-base">
                   <Link href="/auth">{lang}</Link>
