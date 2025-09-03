@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import Image from 'next/image';
+import { Languages } from 'lucide-react';
 
 const languages = [
   "English", "हिन्दी", "বাংলা", "తెలుగు", "मराठी", "தமிழ்", "ગુજરાતી", "ಕನ್ನಡ", 
@@ -23,14 +24,9 @@ export default function LanguageSelection() {
       <main className="relative z-10 flex flex-1 items-center justify-center p-4">
         <Card className="w-full max-w-2xl text-center shadow-2xl bg-card/90 backdrop-blur-sm">
           <CardHeader className="items-center">
-              <Image 
-                src="https://picsum.photos/201/201"
-                data-ai-hint="indian farmer"
-                alt="GrahSahay Logo"
-                width={80}
-                height={80}
-                className="rounded-full mb-4 border-4 border-primary"
-              />
+              <div className="p-4 bg-primary rounded-full mb-4 border-4 border-primary-foreground/50 shadow-lg">
+                <Languages className="h-10 w-10 text-primary-foreground" />
+              </div>
             <CardTitle className="font-headline text-3xl md:text-4xl font-bold text-primary">
               GrahSahay
             </CardTitle>
