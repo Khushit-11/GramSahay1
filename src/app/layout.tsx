@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'त्वरितऋण (Turant Loan)',
+  title: 'GrahSahay',
   description: 'Instant personal loans with AI-enabled underwriting for rural and semi-urban India.',
 };
 
