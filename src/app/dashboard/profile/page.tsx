@@ -1,8 +1,15 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { User, Phone, LogOut } from 'lucide-react';
+import { User, Phone, LogOut, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+
+const languages = [
+  "English", "हिन्दी", "বাংলা", "తెలుగు", "मराठी", "தமிழ்", "ગુજરાતી", "ಕನ್ನಡ", 
+  "മലയാളം", "ଓଡ଼ିଆ", "ਪੰਜਾਬੀ", "অসমীয়া"
+];
 
 export default function ProfilePage() {
     return (
@@ -35,6 +42,33 @@ export default function ProfilePage() {
                             <p className="font-medium">Phone Number</p>
                             <p className="text-muted-foreground">+91 12345 67890</p>
                         </div>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card className="shadow-lg">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <Globe className="h-5 w-5 text-muted-foreground" />
+                        Language Settings
+                    </CardTitle>
+                    <CardDescription>
+                        Choose your preferred language for the app.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="space-y-2">
+                        <Label htmlFor="language-select">Language</Label>
+                        <Select defaultValue="English">
+                            <SelectTrigger id="language-select">
+                                <SelectValue placeholder="Select a language" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {languages.map(lang => (
+                                    <SelectItem key={lang} value={lang}>{lang}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
                     </div>
                 </CardContent>
             </Card>
