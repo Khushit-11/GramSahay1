@@ -24,8 +24,8 @@ export default function LanguageSelection() {
         <Card className="w-full max-w-2xl text-center shadow-2xl bg-card/90 backdrop-blur-sm">
           <CardHeader className="items-center">
               <Image 
-                src="https://picsum.photos/200/200"
-                data-ai-hint="logo farmer"
+                src="https://picsum.photos/201/201"
+                data-ai-hint="indian farmer"
                 alt="GrahSahay Logo"
                 width={80}
                 height={80}

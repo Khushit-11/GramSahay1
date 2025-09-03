@@ -9,9 +9,9 @@ export default function DashboardPage() {
     <div className="flex-1 bg-secondary/50">
       <div className="relative h-48 md:h-64 bg-primary/10">
         <Image 
-          src="https://picsum.photos/1200/400"
-          alt="Farmers in a field"
-          data-ai-hint="farmers field"
+          src="https://picsum.photos/1200/401"
+          alt="Indian farmer in a field"
+          data-ai-hint="indian farmer"
           fill
           className="object-cover"
         />
