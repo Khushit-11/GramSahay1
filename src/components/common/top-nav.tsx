@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { User, Languages } from 'lucide-react';
+import { User, Landmark } from 'lucide-react';
 
 export default function TopNav() {
   return (
@@ -11,7 +11,7 @@ export default function TopNav() {
       <div className="flex justify-between items-center h-full max-w-lg mx-auto px-4">
         <Link href="/dashboard" className="flex items-center gap-2">
             <div className="p-2 bg-primary rounded-full">
-                <Languages className="h-6 w-6 text-primary-foreground" />
+                <Landmark className="h-6 w-6 text-primary-foreground" />
             </div>
             <span className="font-bold text-lg font-headline text-primary">GrahSahay</span>
         </Link>
