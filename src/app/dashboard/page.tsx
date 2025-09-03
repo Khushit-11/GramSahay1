@@ -10,8 +10,8 @@ export default function DashboardPage() {
       <div className="relative h-48 md:h-64 bg-primary/10">
         <Image 
           src="https://picsum.photos/1200/400"
-          alt="Smiling farmer"
-          data-ai-hint="farmer smiling"
+          alt="Farmers in a field"
+          data-ai-hint="farmers field"
           fill
           className="object-cover"
         />
